@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quà tặng 20/10</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #ffb6d9, #fff0f5, #ffe2b8);
+    overflow-x: hidden;
+}
+
+.card {
+    width: 90%;
+    max-width: 430px;
+    padding: 30px 20px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 28px;
+    box-shadow: 0 10px 35px #ec6b9c55;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #f02e79;
+    font-size: 28px;
+}
+
+p {
+    color: #a74371;
+    line-height: 1.8;
+}
+
+.flower {
+    font-size: 55px;
+    margin: 15px;
+}
+
+button {
+    border: none;
+    border-radius: 40px;
+    padding: 16px 23px;
+    background: linear-gradient(45deg, #ff3985, #ff85ad);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 18px #ff7eac77;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.07);
+}
+
+#gift {
+    display: none;
+    margin-top: 20px;
+    animation: pop 0.8s ease;
+}
+
+.drink {
+    font-size: 100px;
+    animation: bounce 1s infinite;
+}
+
+@keyframes pop {
+    from { opacity: 0; transform: scale(0.3); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.petal {
+    position: fixed;
+    top: -40px;
+    z-index: 5;
+    pointer-events: none;
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="flower">🌷💐🌷</div>
+
+    <h1>HAPPY 20/10 💖</h1>
+
+    <p>
+        Nhân ngày Phụ nữ Việt Nam 20/10,<br>
+        xin gửi tặng tất cả chị em một món quà nhỏ! 🎁<br>
+        <b>Hãy bấm nút bên dưới để nhận nhé!</b> 🧋
+    </p>
+
+    <button id="btn" onclick="nhanNuoc()">
+        🎁 NHẬN NGAY 🧋
+    </button>
+
+    <div id="gift">
+        <div class="drink">🧋</div>
+
+        <h2 style="color:#f02e79">
+            🎉 CHÚC MỪNG BẠN!
+        </h2>
+
+        <p>
+            💝 Bạn đã nhận được 1 ly nước 💝<br><br>
+            Chúc bạn ngày 20/10 thật vui vẻ! 🌸<br>
+            Luôn xinh đẹp, trẻ trung và rạng rỡ! 🌹<br>
+            Công việc thuận lợi, tiền vào đầy túi! 💰<br>
+            Mỗi ngày đều ngập tràn niềm vui và hạnh phúc! 💕
+        </p>
+
+        <h2 style="color:#ff3985">
+            🥤 MỜI BẠN NHẬN NƯỚC!
+        </h2>
+
+        <p>Chúc chị em có một ngày 20/10 tuyệt vời! ❤️</p>
+    </div>
+</div>
+
+<script>
+function nhanNuoc() {
+    document.getElementById("gift").style.display = "block";
+
+    const btn = document.getElementById("btn");
+    btn.innerText = "💖 BẠN ĐÃ NHẬN NƯỚC!";
+    btn.disabled = true;
+    btn.style.opacity = "0.7";
+
+    const icons = ["🌸", "💖", "🌷", "💕", "✨"];
+
+    for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+            const petal = document.createElement("div");
+            petal.className = "petal";
+            petal.innerText =
+                icons[Math.floor(Math.random() * icons.length)];
+            petal.style.left = Math.random() * 100 + "vw";
+            petal.style.fontSize = (18 + Math.random() * 20) + "px";
+            petal.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 6500);
+        }, i * 70);
+    }
+}
+</script>
+
+</body>
+</html>
+
+
+
 
